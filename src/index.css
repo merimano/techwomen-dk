@@ -1,0 +1,257 @@
+@import "tailwindcss";
+/* Inter is loaded via a <link> in index.html (an @import here would have to
+   sit before Tailwind's own @layer rules, which defeats the point of
+   keeping Tailwind's import at the very top of this file). */
+
+/*
+  TechWomen Cph — "Bright Coral" design tokens.
+  Source of truth: Guidelines.md (project docs). Keep these two in sync —
+  if a token changes in Figma, update it here, not the other way around.
+*/
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Coral ramp — hero/brand color: CTAs, accents, badges */
+  --color-coral-50: #fff5f2;
+  --color-coral-100: #ffe8e1;
+  --color-coral-200: #ffcabc;
+  --color-coral-300: #ffaa94;
+  --color-coral-400: #ff8a6c;
+  --color-coral-500: #ff6b4a;
+  --color-coral-600: #e8533a;
+  --color-coral-700: #cc3d28;
+  --color-coral-800: #a62d1c;
+  --color-coral-900: #7a1e12;
+
+  /* Teal ramp — secondary accent */
+  --color-teal-50: #f0fafa;
+  --color-teal-100: #d4f0ee;
+  --color-teal-200: #a8deda;
+  --color-teal-300: #7bcac5;
+  --color-teal-400: #52b5ae;
+  --color-teal-500: #3a9e96;
+  --color-teal-600: #2e817a;
+  --color-teal-700: #236560;
+  --color-teal-800: #1a4a46;
+  --color-teal-900: #12332f;
+
+  /* Teal Deep ramp — darker secondary, used in gradients */
+  --color-teal-deep-50: #e8f8f7;
+  --color-teal-deep-100: #c0ece8;
+  --color-teal-deep-200: #8dd9d2;
+  --color-teal-deep-300: #5ac5bc;
+  --color-teal-deep-400: #35afa5;
+  --color-teal-deep-500: #1a8f85;
+  --color-teal-deep-600: #14756c;
+  --color-teal-deep-700: #0f5b54;
+  --color-teal-deep-800: #0a423d;
+  --color-teal-deep-900: #062c28;
+
+  /* Warm neutrals — surfaces, text, borders (revised ramp, not the old peachy one) */
+  --color-warm-0: #ffffff;
+  --color-warm-50: #faf9f8;
+  --color-warm-100: #f5f3f1;
+  --color-warm-200: #ece9e6;
+  --color-warm-300: #dad6d2;
+  --color-warm-400: #c4bfba;
+  --color-warm-500: #a8a39e;
+  --color-warm-600: #78736f;
+  --color-warm-700: #524e4b;
+  --color-warm-800: #363331;
+  --color-warm-900: #1d1b1a;
+  --color-warm-1000: #0d0c0b;
+
+  /* Yellow ramp — still unused/no assigned meaning; kept for completeness only */
+  --color-yellow-50: #fff8e6;
+  --color-yellow-100: #ffedb3;
+  --color-yellow-200: #ffe080;
+  --color-yellow-300: #ffd24d;
+  --color-yellow-400: #ffc626;
+  --color-yellow-500: #e0b440;
+  --color-yellow-600: #c49a20;
+  --color-yellow-700: #a07d18;
+  --color-yellow-800: #7a6012;
+  --color-yellow-900: #54420d;
+
+  /* Semantic tokens — prefer these over raw ramp steps */
+  --color-stroke-subtle: #e5e3e0;
+  --color-text-primary: #1d1b1a;
+  --color-text-secondary: #8f8c8a;
+  --color-text-decorative: #78736f;
+  --color-accent-coral: #ff6b4a;
+  --color-accent-coral-hover: #e8533a;
+
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-glow-coral: 0px 0px 24px 4px rgba(255, 107, 74, 0.3);
+  --shadow-warm: 0px 4px 16px -4px rgba(31, 24, 21, 0.08);
+  --shadow-subtle: 0px 2px 8px -2px rgba(31, 24, 21, 0.05);
+  --shadow-large: 0px 12px 40px -8px rgba(31, 24, 21, 0.12);
+}
+
+@layer components {
+  /* Typography styles — bundle size/weight/line-height/letter-spacing together.
+     Apply the class, don't set these properties by hand. */
+  .text-display {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 80px;
+    letter-spacing: -2px;
+  }
+  .text-heading-1 {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 52px;
+    letter-spacing: -1px;
+  }
+  .text-heading-2 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+  }
+  .text-heading-3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+  .text-body-large {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+  }
+  .text-body {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .text-kicker {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+@layer components {
+  /* Button / Primary — gradient CTA. Real :hover/:active wired here in CSS
+     (this is the fix for the Figma Make bug documented in Guidelines.md:
+     "Responsiveness & completeness" — Hover/Active variants existed in Figma
+     but were never wired to working interactivity in the generated code). */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    background: linear-gradient(to right, #ff8a6c 0%, #ff6b4a 50%, #e8533a 100%);
+    transition: background-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(to right, #ff7a5c 0%, #ff5c3b 50%, #d9452e 100%);
+    box-shadow: 0px 4px 6px rgba(255, 107, 74, 0.3);
+  }
+  .btn-primary:active {
+    background: linear-gradient(to right, #e06b52 0%, #d95233 50%, #c74029 100%);
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-primary--normal {
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+  .btn-primary--small {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  /* Button / Secondary — plain text link + trailing arrow, no box. */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-accent-coral);
+    transition: color 0.2s ease;
+  }
+  .btn-secondary:hover {
+    color: var(--color-accent-coral-hover);
+    text-decoration: underline;
+  }
+  .btn-secondary:active {
+    color: #cc3d28;
+  }
+  .btn-secondary--neutral {
+    color: var(--color-text-primary);
+  }
+  .btn-secondary--neutral:hover {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+  }
+
+  /* Form fields used in the membership signup form. */
+  .form-input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--color-stroke-subtle);
+    background-color: var(--color-warm-0);
+    padding: 10px 14px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-primary);
+    transition: border-color 0.2s ease;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-accent-coral);
+  }
+}
+
+@layer utilities {
+  /* Bright/Gradient Coral — primary buttons, testimonial accent bar */
+  .bg-gradient-coral {
+    background: linear-gradient(to right, #ff8a6c 0%, #ff6b4a 50%, #e8533a 100%);
+  }
+  .bg-gradient-coral-hover {
+    background: linear-gradient(to right, #ff7a5c 0%, #ff5c3b 50%, #d9452e 100%);
+  }
+  .bg-gradient-coral-active {
+    background: linear-gradient(to right, #e06b52 0%, #d95233 50%, #c74029 100%);
+  }
+  /* Bright/Gradient Coral-Teal — full-width section/banner backgrounds only */
+  .bg-gradient-coral-teal {
+    background: linear-gradient(to right, #ec7c5c 0%, #52b5ae 50%, #236560 100%);
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-warm-0);
+  color: var(--color-text-primary);
+}
