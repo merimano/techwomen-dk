@@ -7,7 +7,7 @@ import { ButtonPrimary } from "../components/Button";
 // exactly what the brief asks for — what a member wants out of the
 // community, and whether/how they want to get involved — alongside the
 // standard name/email fields. Wire the onSubmit handler up to whatever
-// backend/CRM/Airtable/Mailchimp endpoint TechWomen Cph ends up using.
+// backend/CRM/Airtable/Mailchimp endpoint TechWomen DK ends up using.
 export function SignupForm() {
   const [wantsToGetInvolved, setWantsToGetInvolved] = useState(false);
   const [submitted, setSubmitted] = useState(false);

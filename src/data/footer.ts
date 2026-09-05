@@ -7,7 +7,7 @@
 // the dark background here instead, adjusted for contrast; flag the stray
 // token to the design-system owner.
 export const footer = {
-  logoLabel: "TechWomen Cph",
+  logoLabel: "TechWomen DK",
   tagline:
     "Copenhagen's premier community backing and elevating local women developers, designers, product leads, and tech entrepreneurs.",
   columns: [
@@ -15,6 +15,6 @@ export const footer = {
     { heading: "Partner", links: ["Sponsors", "Host a workshop", "Apply to speak"] },
     { heading: "Connect", links: ["hello@techwomencph.dk", "Copenhagen, Denmark", "Slack Community"] },
   ],
-  copyright: "© 2026 TechWomen Cph. All rights reserved.",
+  copyright: "© 2026 TechWomen DK. All rights reserved.",
   legalLinks: ["Privacy Policy", "GDPR Compliance"],
 };
