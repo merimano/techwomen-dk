@@ -3,7 +3,7 @@ import { ButtonPrimary } from "../components/Button";
 
 export function GetInvolved() {
   return (
-    <section id="get-involved" className="px-6 py-16 sm:px-10 sm:py-24" style={{ backgroundColor: "var(--color-warm-50)" }}>
+    <section id="get-involved" className="px-6 py-16 sm:px-10" style={{ backgroundColor: "var(--color-warm-50)" }}>
       <div className="mx-auto flex max-w-7xl flex-col gap-16 lg:px-10">
         <div className="flex max-w-3xl flex-col gap-6">
           <p className="text-kicker" style={{ color: "var(--color-accent-coral)" }}>
@@ -44,7 +44,9 @@ export function GetInvolved() {
               ))}
             </div>
           </div>
-          <ButtonPrimary href="#membership">{getInvolved.cta.ctaLabel}</ButtonPrimary>
+          <ButtonPrimary href="#membership" className="self-start">
+            {getInvolved.cta.ctaLabel}
+          </ButtonPrimary>
         </div>
       </div>
     </section>

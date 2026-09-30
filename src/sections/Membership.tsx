@@ -1,13 +1,11 @@
 import { membership } from "../data/membership";
 import { ButtonPrimary } from "../components/Button";
 import { CircleCheck, SparklesIcon } from "../components/icons";
-import { SignupForm } from "./SignupForm";
 
-// Membership "Container" (node 406:7625) plus a signup form built from the
-// project brief (see data/membership.ts note — no form exists in Figma yet).
+// Membership "Container" (node 406:7625).
 export function Membership() {
   return (
-    <section id="membership" className="px-6 py-16 sm:px-10 sm:py-24" style={{ backgroundColor: "var(--color-warm-100)" }}>
+    <section id="membership" className="px-6 py-16 sm:px-10" style={{ backgroundColor: "var(--color-warm-100)" }}>
       <div className="mx-auto flex max-w-7xl flex-col gap-16 lg:px-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col gap-8">
@@ -45,7 +43,7 @@ export function Membership() {
               {membership.description}
             </p>
 
-            <ButtonPrimary href="#signup" className="self-start">
+            <ButtonPrimary href="#membership" className="self-start">
               {membership.ctaLabel}
             </ButtonPrimary>
           </div>
@@ -73,10 +71,6 @@ export function Membership() {
               ))}
             </ul>
           </div>
-        </div>
-
-        <div id="signup" className="mx-auto w-full max-w-xl scroll-mt-24">
-          <SignupForm />
         </div>
       </div>
     </section>

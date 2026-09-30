@@ -19,7 +19,7 @@ export const programs: Program[] = [
     kicker: "01 / Networking",
     title: "Panel Talks",
     description:
-      "Industry leaders share raw, unvarnished insights on scaling, building, and surviving in tech.",
+      "People doing the work, at every stage, share what they've learned building and scaling in tech.",
   },
   {
     kicker: "02 / Skill building",

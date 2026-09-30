@@ -8,7 +8,7 @@ import { ImagePlaceholder } from "../components/ImagePlaceholder";
 // the "Networking App" content gap (in the project brief, not yet in Figma).
 export function WhatWeDo() {
   return (
-    <section id="about" className="px-6 py-16 sm:px-10 sm:py-24" style={{ backgroundColor: "var(--color-warm-50)" }}>
+    <section id="about" className="px-6 py-16 sm:px-10" style={{ backgroundColor: "var(--color-warm-50)" }}>
       <div className="mx-auto flex max-w-7xl flex-col gap-16 lg:px-10">
         <SectionHeader
           kicker="What we do"

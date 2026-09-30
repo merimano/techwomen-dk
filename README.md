@@ -28,10 +28,9 @@ Every piece of copy — the board team, sponsorship tiers, membership
 pricing, program descriptions, footer links — is pulled directly from the
 TechWomen Cph Figma file, not invented. The exceptions, clearly marked in
 code comments (see `CLAUDE.md` for the full list), are: the "Networking
-App" card (in the brief, not yet in Figma), the membership signup form
-fields (built from the brief), and all photography (gradient placeholders
-— see `src/components/ImagePlaceholder.tsx` for why and how to swap in
-real photos).
+App" card (in the brief, not yet in Figma) and all photography (gradient
+placeholders — see `src/components/ImagePlaceholder.tsx` for why and how
+to swap in real photos).
 
 ## Pushing to GitHub
 

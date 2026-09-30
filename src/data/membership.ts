@@ -28,15 +28,3 @@ export const membership = {
     },
   ],
 };
-
-// NOTE — content gap: the project brief asks the signup flow to let members
-// share "what they want to get out of the community" and "if/how they want
-// to get involved". No such form exists in the audited Figma frames (the
-// Container above is pricing/marketing copy with a plain "Join us" button)
-// — these fields are built from the brief alone in <SignupForm />.
-export const signupPrompts = {
-  goalsLabel: "What do you want to get out of TechWomen DK?",
-  goalsPlaceholder: "e.g. meet other women in tech, find a mentor, learn AI skills, hire from the community…",
-  involvementLabel: "Would you like to get involved beyond attending events?",
-  involvementHowLabel: "If so, how? (speaking, mentoring, hosting, volunteering…)",
-};

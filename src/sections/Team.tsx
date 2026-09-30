@@ -4,7 +4,7 @@ import { SectionHeader } from "../components/SectionHeader";
 
 export function Team() {
   return (
-    <section id="team" className="px-6 py-16 sm:px-10 sm:py-24">
+    <section id="team" className="px-6 py-16 sm:px-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-16 lg:px-10">
         <SectionHeader
           kicker="The team"

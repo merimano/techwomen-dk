@@ -40,21 +40,17 @@ reintroduce that bug by moving button state handling into JS/React state.
 1. **"Networking App"** (`src/data/programs.ts`) has no matching card in
    the source Figma file — it's in the project brief but not yet designed.
    Rendered with a `comingSoon` badge rather than pretending it's real.
-2. **Signup form fields** (`src/sections/SignupForm.tsx`) — "what do you
-   want to get out of the community" and "do you want to get involved" are
-   from the brief only; no such form exists in Figma yet. `onSubmit` is a
-   stub — wire it to whatever backend TechWomen Cph adopts.
-3. **Photography** — every photo slot (`ImagePlaceholder`) is a token-based
+2. **Photography** — every photo slot (`ImagePlaceholder`) is a token-based
    gradient stand-in, not a real image. Figma's exported asset URLs expire
    ~7 days after export and this environment couldn't fetch/persist the
    originals. Slots that need real photos: 5 team headshots, 3 program
    card images (Panel Talks / AI Masterclasses / AI Lab), 1 mentorship
    visual. Drop files into `src/assets/images/` and swap
    `<ImagePlaceholder>` for `<img>` — nothing else needs to change.
-4. **Mission section animation** — Figma has this as a word-by-word reveal
+3. **Mission section animation** — Figma has this as a word-by-word reveal
    (motion data available via `get_motion_context`, not yet pulled in).
    Rendered as static text for now.
-5. `--bright/text-footer` in Figma still resolves to a stale pre-token-update
+4. `--bright/text-footer` in Figma still resolves to a stale pre-token-update
    hex (`#8c6e62`) — not carried over; the footer uses `text-secondary`-level
    contrast against the dark background instead.
 

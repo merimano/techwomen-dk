@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex flex-col items-center gap-16 overflow-hidden px-6 py-16 text-center sm:px-10 sm:py-24 lg:py-28"
+      className="relative flex flex-col items-center gap-16 overflow-hidden px-6 py-16 text-center sm:px-10"
     >
       <div
         aria-hidden="true"
