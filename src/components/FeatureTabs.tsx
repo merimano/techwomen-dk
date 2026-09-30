@@ -36,7 +36,7 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
               className="relative w-full py-3 pl-5 pr-4 text-left text-body transition-colors"
               style={{
                 fontWeight: isActive ? 700 : 500,
-                color: isActive ? "var(--color-text-primary)" : "var(--color-text-secondary)",
+                color: isActive ? "var(--color-text-primary)" : "var(--color-text-decorative)",
               }}
             >
               <span

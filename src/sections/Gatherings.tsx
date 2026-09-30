@@ -3,16 +3,16 @@ import { gatheringsIntro, gatheringTabs } from "../data/gatherings";
 import { SectionHeader } from "../components/SectionHeader";
 import { FeatureTabs } from "../components/FeatureTabs";
 
-// Gap below the sticky site header — both where the nav pins and the
-// scroll-spy "trigger line" a step's top/bottom is measured against.
+// Gap below the sticky site header — where the nav itself pins.
 const BREATHING_ROOM = 24;
 
 // Feature_Tabs_Section (Figma nodes 658:2331–658:2392) as a scroll-spy: the
 // nav pins via plain CSS `sticky` while its four steps stack normally in
-// the right column. Each nav item's line fills as its step scrolls past the
-// trigger line; once full, the next item takes over. No page-scroll
-// hijacking — the browser's own sticky behavior handles pin/unpin, so the
-// nav scrolls away naturally once the last step's content ends.
+// the right column. A step becomes active once it covers the majority of
+// the screen — i.e. once its top crosses the viewport's vertical midpoint —
+// and its nav line fills to match; once full, the next item takes over. No
+// page-scroll hijacking — the browser's own sticky behavior handles
+// pin/unpin, so the nav scrolls away naturally once the last step ends.
 export function Gatherings() {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [navOffset, setNavOffset] = useState(96);
@@ -22,14 +22,18 @@ export function Gatherings() {
   useEffect(() => {
     let rafId = 0;
 
-    const triggerY = () => (document.querySelector("header")?.getBoundingClientRect().height ?? 72) + BREATHING_ROOM;
+    // Where the nav itself pins — just below the sticky site header.
+    const navTop = () => (document.querySelector("header")?.getBoundingClientRect().height ?? 72) + BREATHING_ROOM;
+    // Where a step "wins" the screen — the viewport's vertical midpoint, so
+    // a step only takes over once more than half the screen is its content.
+    const activationTrigger = () => window.innerHeight / 2;
 
-    const measure = () => setNavOffset(triggerY());
+    const measure = () => setNavOffset(navTop());
 
     const onScroll = () => {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        const trigger = triggerY();
+        const trigger = activationTrigger();
         let lastReached = 0;
         const next = stepRefs.current.map((el, index) => {
           if (!el) return 0;
@@ -58,7 +62,7 @@ export function Gatherings() {
     const index = gatheringTabs.findIndex((tab) => tab.id === id);
     const el = stepRefs.current[index];
     if (!el) return;
-    const target = el.getBoundingClientRect().top + window.scrollY - navOffset;
+    const target = el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: target, behavior: reduceMotion ? "auto" : "smooth" });
   };
