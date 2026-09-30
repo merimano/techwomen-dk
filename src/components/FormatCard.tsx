@@ -12,19 +12,10 @@ export function FormatCard({ program }: { program: Program }) {
         borderColor: "var(--color-stroke-subtle)",
         backgroundColor: "var(--color-warm-0)",
         boxShadow: "var(--shadow-subtle)",
-        opacity: program.comingSoon ? 0.75 : 1,
       }}
     >
       <div className="relative h-[220px] w-full sm:h-[280px]">
         <ImagePlaceholder variant="coral" className="h-full w-full" />
-        {program.comingSoon && (
-          <span
-            className="absolute right-3 top-3 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[1.5px] text-white"
-            style={{ backgroundColor: "var(--color-warm-1000)" }}
-          >
-            Coming soon
-          </span>
-        )}
       </div>
       <div className="flex flex-col gap-4 p-6 sm:p-8">
         <p className="text-kicker" style={{ color: "var(--color-accent-coral)" }}>

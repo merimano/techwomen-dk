@@ -2,8 +2,6 @@
 // 658:2374, 658:2392) — an interactive tabbed showcase of the same four
 // activities listed in data/programs.ts, paired with real event photos.
 
-import { programs } from "./programs";
-
 export const gatheringsIntro = {
   kicker: "Gatherings",
   title: "Four ways to upskill with us",
@@ -17,14 +15,12 @@ export interface GatheringTab {
   image: string;
 }
 
-const panelTalks = programs.find((program) => program.title === "Panel Talks")!;
-
 export const gatheringTabs: GatheringTab[] = [
   {
     id: "panels",
     tabLabel: "Panels",
     title: "Panel that foster transparent experiences and supports network building",
-    description: panelTalks.description,
+    description: "People doing the work, at every stage, share what they've learned building and scaling in tech.",
     image: "/images/gatherings/panels.png",
   },
   {
