@@ -1,4 +1,5 @@
 import type { GatheringTab } from "../data/gatherings";
+import { ImagePlaceholder } from "./ImagePlaceholder";
 
 interface FeatureTabsProps {
   tabs: GatheringTab[];
@@ -77,7 +78,7 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
             {/* Full column width, 16:9 — e.g. 482px tall at the 856px column
                 width the right column renders at on a 1440px viewport. */}
             <div className="w-full overflow-hidden rounded-[var(--radius-lg)]" style={{ aspectRatio: "16 / 9" }}>
-              <img src={tab.image} alt={tab.title} className="h-full w-full object-cover" />
+              <ImagePlaceholder variant="coral" className="h-full w-full" />
             </div>
           </div>
         ))}

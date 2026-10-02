@@ -3,7 +3,6 @@ export const navLinks = ["About", "Gatherings", "Calendar", "Membership", "Get I
 
 export const hero = {
   titleLines: ["Backing women to shape", "the future of technology."],
-  subtitle:
-    "Product, design, engineering, data, AI, GTM, founders. Join the women shaping tech in Denmark.",
+  subtitleLines: ["Product, design, engineering, data, AI, GTM, founders.", "Join the women shaping tech in Denmark."],
   ctaLabel: "Join the community",
 };

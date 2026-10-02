@@ -15,7 +15,7 @@ export function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-8 text-sm font-semibold md:flex" style={{ color: "var(--color-text-secondary)" }}>
+        <nav className="hidden items-center gap-8 text-sm font-normal md:flex" style={{ color: "var(--color-text-secondary)" }}>
           {navLinks.map((link) => (
             <a key={link} href={`#${link.toLowerCase().replace(/\s+/g, "-")}`} className="hover:text-[var(--color-text-primary)]">
               {link}
@@ -37,7 +37,7 @@ export function Header() {
 
       {open && (
         <nav
-          className="flex flex-col gap-1 border-t px-6 py-4 text-sm font-semibold md:hidden"
+          className="flex flex-col gap-1 border-t px-6 py-4 text-sm font-normal md:hidden"
           style={{ borderColor: "var(--color-stroke-subtle)", color: "var(--color-text-secondary)" }}
         >
           {navLinks.map((link) => (
