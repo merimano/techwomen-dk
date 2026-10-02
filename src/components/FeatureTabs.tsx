@@ -66,12 +66,14 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
             ref={(el) => registerStepRef(index, el)}
             className="flex flex-col items-start gap-6 lg:gap-8"
           >
-            <h3 className="text-heading-2" style={{ color: "var(--color-text-primary)" }}>
-              {tab.title}
-            </h3>
-            <p className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
-              {tab.description}
-            </p>
+            <div className="flex flex-col items-start gap-4">
+              <h3 className="text-heading-3" style={{ color: "var(--color-text-primary)" }}>
+                {tab.title}
+              </h3>
+              <p className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
+                {tab.description}
+              </p>
+            </div>
             {/* Full column width, 16:9 — e.g. 482px tall at the 856px column
                 width the right column renders at on a 1440px viewport. */}
             <div className="w-full overflow-hidden rounded-[var(--radius-lg)]" style={{ aspectRatio: "16 / 9" }}>
