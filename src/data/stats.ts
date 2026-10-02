@@ -7,6 +7,6 @@ export interface Stat {
 export const stats: Stat[] = [
   { value: "850+", label: "Attendees" },
   { value: "25+", label: "Gatherings" },
-  { value: "80+", label: "Mentorship program attendees" },
+  { value: "2nd", label: "Mentorship program cohort" },
   { value: "50+", label: "Active contributors" },
 ];

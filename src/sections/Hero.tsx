@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex flex-col items-center gap-16 overflow-hidden px-6 py-16 text-center sm:px-10"
+      className="relative flex min-h-[calc(100svh-72px)] flex-col items-center justify-center gap-16 overflow-hidden px-6 py-16 text-center sm:px-10"
     >
       <div
         aria-hidden="true"
@@ -25,12 +25,6 @@ export function Hero() {
         className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-3xl"
         style={{ background: "radial-gradient(circle, var(--color-coral-300) 0%, transparent 70%)" }}
       />
-
-      <div className="relative inline-flex items-center rounded-full border px-4 py-1.5" style={{ borderColor: "var(--color-stroke-subtle)" }}>
-        <span className="text-kicker" style={{ color: "var(--color-text-secondary)" }}>
-          {hero.locationBadge}
-        </span>
-      </div>
 
       <div className="relative flex max-w-3xl flex-col items-center gap-4">
         <h1 className="text-[40px] leading-[46px] tracking-[-1px] sm:text-[56px] sm:leading-[62px] lg:text-display" style={{ color: "var(--color-text-primary)", fontWeight: 700 }}>

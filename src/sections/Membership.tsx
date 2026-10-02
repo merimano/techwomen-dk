@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { membership } from "../data/membership";
 import { ButtonPrimary } from "../components/Button";
 import { CircleCheck, SparklesIcon } from "../components/icons";
+import { BillingToggle, type BillingPeriod } from "../components/BillingToggle";
 
 // Membership "Container" (node 406:7625).
 export function Membership() {
+  const [billing, setBilling] = useState<BillingPeriod>("yearly");
+  const plan = membership.pricing[billing];
+
   return (
     <section id="membership" className="px-6 py-16 sm:px-10" style={{ backgroundColor: "var(--color-warm-100)" }}>
       <div className="mx-auto flex max-w-7xl flex-col gap-16 lg:px-10">
@@ -23,25 +28,32 @@ export function Membership() {
             </div>
 
             <div className="flex flex-col gap-4">
+              <BillingToggle value={billing} onChange={setBilling} />
               <div className="flex items-baseline gap-3">
                 <span className="text-[40px] font-semibold leading-[1] tracking-[-1px] sm:text-[48px] sm:leading-[52px]" style={{ color: "var(--color-text-primary)" }}>
-                  {membership.price}
+                  {plan.price}
                 </span>
                 <span className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
-                  {membership.period}
+                  {plan.period}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <SparklesIcon className="size-4" />
-                <span className="text-[14px] font-medium" style={{ color: "var(--color-text-secondary)" }}>
-                  {membership.savingsNote}
-                </span>
-              </div>
+              {billing === "yearly" && (
+                <div className="flex items-center gap-2">
+                  <SparklesIcon className="size-4" />
+                  <span className="text-[14px] font-medium" style={{ color: "var(--color-text-secondary)" }}>
+                    {membership.savingsNote}
+                  </span>
+                </div>
+              )}
             </div>
 
-            <p className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
-              {membership.description}
-            </p>
+            <div className="flex flex-col gap-4">
+              {membership.description.map((paragraph) => (
+                <p key={paragraph} className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
 
             <ButtonPrimary href="#membership" className="self-start">
               {membership.ctaLabel}
@@ -49,8 +61,8 @@ export function Membership() {
           </div>
 
           <div
-            className="flex flex-col gap-6 rounded-2xl p-8 shadow-[var(--shadow-subtle)]"
-            style={{ backgroundColor: "var(--color-warm-0)" }}
+            className="flex flex-col gap-6 rounded-[var(--radius-md)] border p-8"
+            style={{ borderColor: "var(--color-stroke-subtle)", backgroundColor: "var(--color-warm-0)" }}
           >
             <h3 className="text-heading-3" style={{ color: "var(--color-warm-1000)" }}>
               {membership.benefitsHeading}

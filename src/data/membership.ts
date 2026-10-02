@@ -1,30 +1,35 @@
 // Source: Figma Membership "Container" (node 406:7625).
 export const membership = {
   kicker: "Membership",
-  titleLines: ["Become a", "TechWomen DK member"],
-  price: "499 DKK",
-  period: "/ år",
+  titleLines: ["Become a member"],
+  pricing: {
+    monthly: { price: "69 DKK", period: "/ month" },
+    yearly: { price: "499 DKK", period: "/ year" },
+  },
   savingsNote: "Save 40% compared to monthly billing",
-  description:
-    "Join a vibrant community of women in tech across Denmark. Get priority access to events, mentorship matching, a member-only Slack, and a curated quarterly newsletter - all designed to help you grow, connect, and lead.",
+  description: [
+    "Join women building Denmark's tech scene — across product, engineering, data, AI, and founding.",
+    "Membership is how you go from showing up to events to being part of the community.",
+  ],
   ctaLabel: "Join us",
   benefitsHeading: "Member Benefits",
   benefits: [
     {
-      title: "Priority Event Access",
-      description: "Never miss out. Get 48-hour early registration before public ticket release.",
+      title: "Discounted Gatherings",
+      description: "Pay less at every event. The discount applies automatically once you're a member — no code, no catch.",
     },
     {
-      title: "Mentorship Matching",
-      description: "Gain access to quarterly cohort applications for our vetted mentorship pathways.",
+      title: "Member Directory",
+      description: "Get listed, get found. Other members can search you by role, skill, and industry.",
     },
     {
-      title: "Member-Only Slack",
-      description: "Connect daily with hundreds of Copenhagen-based developers, founders, and designers.",
+      title: "WhatsApp Channel",
+      description: "Skip the inbox. Ask a question, share a lead, get a same-day answer from someone in the room.",
     },
     {
-      title: "Quarterly Newsletter",
-      description: "Curated tech job opportunities, local resources, and member profiles sent directly to you.",
+      title: "Skill Circles",
+      description:
+        "Small groups, one focus — AI, product, engineering leadership. For going deeper with your people, not just networking.",
     },
   ],
 };

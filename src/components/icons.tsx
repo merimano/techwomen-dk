@@ -28,17 +28,16 @@ export function ArrowIcon({ className }: { className?: string }) {
   );
 }
 
+// Matches Figma "circle-check" (node 590:499) exactly — plain outline, no
+// filled background.
 export function CircleCheck({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
-      <circle cx="10" cy="10" r="9" fill="var(--color-coral-100)" />
       <path
-        d="M6.2 10.3l2.3 2.3 5.1-5.6"
-        stroke="var(--color-accent-coral)"
-        strokeWidth="1.7"
+        d="M7.4998 10L9.1666 11.6668L12.5002 8.3332M18.334 10C18.334 14.6027 14.6027 18.334 10 18.334C5.39726 18.334 1.666 14.6027 1.666 10C1.666 5.39726 5.39726 1.666 10 1.666C14.6027 1.666 18.334 5.39726 18.334 10Z"
+        stroke="var(--color-text-primary)"
+        strokeWidth="2"
         strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
       />
     </svg>
   );

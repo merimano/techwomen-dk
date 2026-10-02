@@ -70,10 +70,9 @@ export function Gatherings() {
   const activeTab = gatheringTabs[activeIndex] ?? gatheringTabs[0];
 
   return (
-    <section style={{ backgroundColor: "var(--color-warm-50)" }}>
+    <section id="gatherings" style={{ backgroundColor: "var(--color-warm-50)" }}>
       <div className="px-6 pt-16 sm:px-10">
         <div className="mx-auto w-full max-w-7xl lg:px-10">
-          <div className="mb-16 h-px w-full lg:mb-8" style={{ backgroundColor: "var(--color-stroke-subtle)" }} />
           {/* 96px below the hero heading — the other 96px lives on the tabs
               block below (pt-24), matching Figma's two separately-padded
               frames (header frame pb-96, tabs frame pt-96) for a 192px gap. */}
