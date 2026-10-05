@@ -6,7 +6,7 @@ import { ImagePlaceholder } from "./ImagePlaceholder";
 // repeated instances (see Guidelines.md, "Responsiveness & completeness").
 export function TeamCard({ member }: { member: TeamMember }) {
   return (
-    <div className="relative flex h-[260px] w-full min-w-[160px] flex-1 basis-40 flex-col justify-end overflow-hidden rounded-[var(--radius-md)] sm:basis-[220px] sm:flex-none sm:w-[220px]">
+    <div className="relative flex h-[260px] w-[220px] shrink-0 flex-col justify-end overflow-hidden rounded-[var(--radius-md)]">
       <ImagePlaceholder variant="warm" className="absolute inset-0" />
       <div
         aria-hidden="true"
