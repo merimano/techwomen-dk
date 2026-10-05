@@ -44,11 +44,20 @@ export function Hero() {
           </span>
         </h1>
         <p className="max-w-2xl text-body-large" style={{ color: "var(--color-text-primary)" }}>
-          {hero.subtitleLines.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+          <span className="block sm:hidden">
+            {hero.mobileSubtitleLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </span>
+          <span className="hidden sm:block">
+            {hero.subtitleLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </span>
         </p>
       </div>
 

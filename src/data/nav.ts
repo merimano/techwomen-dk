@@ -7,5 +7,14 @@ export const hero = {
   // one line — this breaks it into shorter, safely-fitting lines instead.
   mobileTitleLines: ["Backing women", "to shape", "the future of", "technology."],
   subtitleLines: ["Product, design, engineering, data, AI, GTM, founders.", "Join the women shaping tech in Denmark."],
+  // The first line's natural wrap on mobile leaves an orphaned "GTM,
+  // founders." on its own short row — this splits it at a more balanced
+  // point instead.
+  mobileSubtitleLines: [
+    "Product, design, engineering,",
+    "data, AI, GTM, founders.",
+    "Join the women shaping",
+    "tech in Denmark.",
+  ],
   ctaLabel: "Join the community",
 };
