@@ -17,12 +17,17 @@ interface FeatureTabsProps {
 // Scrolling through a step fills its nav line top-to-bottom; once full, the
 // next item takes over. Gatherings.tsx owns the scroll math — it needs the
 // steps' real DOM positions — and passes the results down as props.
+//
+// This sidebar/content layout only works at `lg`+. Below that, there's no
+// menu — each gathering instead renders as its own editorial card (Figma
+// node 813:795: numbered kicker, heading, full-bleed photo, indented
+// description + rule), one per gathering, in plain scroll order.
 export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, registerStepRef }: FeatureTabsProps) {
   return (
-    <div className="flex w-full flex-col gap-16 lg:flex-row lg:items-start">
+    <div className="flex w-full flex-col lg:flex-row lg:items-start lg:gap-16">
       <nav
         aria-label="Gathering formats"
-        className="sticky flex w-full shrink-0 flex-col items-start gap-1 lg:w-[280px]"
+        className="sticky hidden w-full shrink-0 flex-col items-start gap-1 lg:flex lg:w-[280px]"
         style={{ top: navOffset }}
       >
         {tabs.map((tab, index) => {
@@ -60,7 +65,8 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
         })}
       </nav>
 
-      <div className="flex w-full flex-1 flex-col gap-24">
+      {/* Desktop/lg steps — tracked by registerStepRef for the scroll-spy math. */}
+      <div className="hidden w-full flex-1 flex-col gap-24 lg:flex">
         {tabs.map((tab, index) => (
           <div
             key={tab.id}
@@ -79,6 +85,33 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
                 width the right column renders at on a 1440px viewport. */}
             <div className="w-full overflow-hidden rounded-[var(--radius-lg)]" style={{ aspectRatio: "16 / 9" }}>
               <ImagePlaceholder variant="coral" className="h-full w-full" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Below-lg editorial cards — no scroll-spy, no ref (nothing on this
+          breakpoint reads step position), just plain stacked content. */}
+      <div className="flex w-full flex-col gap-12 lg:hidden">
+        {tabs.map((tab, index) => (
+          <div key={tab.id} className="flex flex-col gap-8">
+            <div className="flex flex-col gap-3">
+              <p className="text-kicker" style={{ color: "var(--color-accent-coral)" }}>
+                {String(index + 1).padStart(2, "0")} / {tab.tabLabel.toUpperCase()}
+              </p>
+              <h3 className="text-heading-3" style={{ color: "var(--color-text-primary)" }}>
+                {tab.title}
+              </h3>
+            </div>
+            {/* Full-bleed: breaks out of the section's own px-6/sm:px-10 padding. */}
+            <div className="-mx-6 h-[300px] overflow-hidden sm:-mx-10">
+              <ImagePlaceholder variant="coral" className="h-full w-full" />
+            </div>
+            <div className="flex flex-col gap-6 pl-20">
+              <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>
+                {tab.description}
+              </p>
+              <div className="h-px w-full" style={{ backgroundColor: "var(--color-accent-coral)" }} />
             </div>
           </div>
         ))}
