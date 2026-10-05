@@ -3,6 +3,9 @@ export const navLinks = ["About", "Gatherings", "Calendar", "Membership", "Get I
 
 export const hero = {
   titleLines: ["Backing women to shape", "the future of technology."],
+  // At 40px on a mobile viewport, "Backing women to shape" doesn't fit on
+  // one line — this breaks it into shorter, safely-fitting lines instead.
+  mobileTitleLines: ["Backing women", "to shape", "the future of", "technology."],
   subtitleLines: ["Product, design, engineering, data, AI, GTM, founders.", "Join the women shaping tech in Denmark."],
   ctaLabel: "Join the community",
 };

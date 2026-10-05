@@ -27,12 +27,21 @@ export function Hero() {
       />
 
       <div className="relative flex max-w-3xl flex-col items-center gap-4">
-        <h1 className="text-[28px] leading-[34px] tracking-[-1px] sm:text-[56px] sm:leading-[62px] lg:text-display" style={{ color: "var(--color-text-primary)", fontWeight: 700 }}>
-          {hero.titleLines.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+        <h1 className="text-[40px] leading-[46px] tracking-[-1px] sm:text-[56px] sm:leading-[62px] lg:text-display" style={{ color: "var(--color-text-primary)", fontWeight: 700 }}>
+          <span className="block sm:hidden">
+            {hero.mobileTitleLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </span>
+          <span className="hidden sm:block">
+            {hero.titleLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </span>
         </h1>
         <p className="max-w-2xl text-body-large" style={{ color: "var(--color-text-primary)" }}>
           {hero.subtitleLines.map((line) => (
