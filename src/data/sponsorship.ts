@@ -1,50 +1,32 @@
-// Source: Figma "Section_Sponsorship" (node 285:5288).
+// Source: Figma "Section_Sponsorship" (node 285:5288); tier cards from
+// Tier_Card_Community/Growth/Impact (nodes 817:888, 817:891, 817:894).
 export interface SponsorshipTier {
   name: string;
-  price: string;
   description: string;
-  benefits: string[];
 }
 
 export const sponsorshipIntro = {
   kicker: "Partnerships",
   title: "Join us in shaping a more inclusive and innovative tech future",
-  description:
-    "Empower women in technology while building brand recognition, gaining exclusive recruitment access, and showcasing your dedication to equity.",
-  ctaLabel: "Inquire about sponsorship",
+  // Sponsorship_Pitch (Figma node 817:884). Its second paragraph (pricing/
+  // deck details) was dropped — that's now covered by the CTA block below.
+  pitch: "This community brings together women across engineering, product, design, and leadership roles in Copenhagen. Companies partner with us to reach a concentrated, engaged audience of local talent, build employer brand, and support a more inclusive tech ecosystem.",
+  // Sponsorship_CTA (Figma node 817:897).
+  deckCtaLabel: "Request our partner deck",
+  deckNote: "Full tiers, pricing, and activation details are included in the PDF.",
 };
 
 export const sponsorshipTiers: SponsorshipTier[] = [
   {
     name: "Community Partner",
-    price: "15.000 DKK",
-    description: "Support our monthly gatherings and secure direct local community visibility.",
-    benefits: [
-      "Company logo featured on our event banners",
-      "Community Slack sponsorship channels",
-      "Dedicated mention at quarterly events",
-    ],
+    description: "Support local events and community visibility.",
   },
   {
     name: "Growth Partner",
-    price: "40.000 DKK",
-    description: "Host technical workshops and build a reliable pipeline to active local talent.",
-    benefits: [
-      "Everything in Community tier",
-      "Opportunity to host 1 technical workshop",
-      "Featured job listings in our newsletter",
-      "Co-branded social media highlights",
-    ],
+    description: "Host workshops and build a reliable local talent pipeline.",
   },
   {
     name: "Impact Partner",
-    price: "85.000 DKK",
-    description: "The ultimate pathway for strategic diversity impact and technical recruiting.",
-    benefits: [
-      "Everything in Growth tier",
-      "Annual Mentorship Cohort exclusive sponsor",
-      "Dedicated employer branding feature",
-      "Direct panelist opportunity at key talks",
-    ],
+    description: "Drive strategic diversity impact and technical recruiting.",
   },
 ];

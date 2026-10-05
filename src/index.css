@@ -113,10 +113,16 @@
     }
   }
   .text-heading-2 {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 600;
-    line-height: 40px;
+    line-height: 36px;
     letter-spacing: -0.5px;
+  }
+  @media (min-width: 640px) {
+    .text-heading-2 {
+      font-size: 36px;
+      line-height: 40px;
+    }
   }
   .text-heading-3 {
     font-size: 24px;
