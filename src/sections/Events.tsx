@@ -12,8 +12,9 @@ export function Events() {
       <div className="mx-auto flex max-w-7xl flex-col gap-16 lg:px-10">
         <SectionHeader kicker={eventsIntro.kicker.toUpperCase()} title={eventsIntro.title} description={eventsIntro.description} />
 
+        {/* Desktop/lg featured-event hero card (panel-hero-variation-3). */}
         <div
-          className="flex flex-col gap-10 rounded-[24px] border p-6 shadow-[var(--shadow-subtle)] sm:p-14"
+          className="hidden flex-col gap-10 rounded-[24px] border p-6 shadow-[var(--shadow-subtle)] sm:p-14 lg:flex"
           style={{ borderColor: "var(--color-stroke-subtle)", backgroundColor: "var(--color-warm-100)" }}
         >
           <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
@@ -61,6 +62,50 @@ export function Events() {
             </div>
             <ButtonPrimary href="#membership">{featuredEvent.ctaLabel}</ButtonPrimary>
           </div>
+        </div>
+
+        {/* Below-lg featured-event card (Figma node 630:677) — no logo mark,
+            smaller heading, speakers scroll horizontally, footer stacks with
+            a full-width CTA. */}
+        <div
+          className="flex flex-col gap-6 rounded-[8px] border p-6 shadow-[var(--shadow-subtle)] lg:hidden"
+          style={{ borderColor: "var(--color-stroke-subtle)", backgroundColor: "var(--color-warm-0)" }}
+        >
+          <div className="flex flex-col items-start gap-3">
+            <p className="text-kicker" style={{ color: "var(--color-accent-coral)" }}>
+              {featuredEvent.badge}
+            </p>
+            <h3 className="text-heading-3" style={{ color: "var(--color-warm-900)" }}>
+              {featuredEvent.title}
+            </h3>
+            <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>
+              {featuredEvent.description}
+            </p>
+          </div>
+
+          <div className="h-px w-full" style={{ backgroundColor: "var(--color-stroke-subtle)" }} />
+
+          <div className="-mx-6 overflow-x-auto px-6">
+            <div className="flex gap-3">
+              {featuredEvent.speakers.map((speaker) => (
+                <div key={speaker.name} className="w-[217.6px] shrink-0">
+                  <SpeakerCard speaker={speaker} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col items-start gap-1">
+            <p className="text-[16px] font-bold" style={{ color: "var(--color-warm-900)" }}>
+              {featuredEvent.location}
+            </p>
+            <p className="text-[13px] font-medium tracking-[0.2px]" style={{ color: "var(--color-text-secondary)" }}>
+              {featuredEvent.date}
+            </p>
+          </div>
+          <ButtonPrimary href="#membership" className="w-full text-center">
+            {featuredEvent.ctaLabel}
+          </ButtonPrimary>
         </div>
 
         <div
