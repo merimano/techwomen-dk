@@ -135,7 +135,7 @@ export function CardArt({ variant, className = "" }: { variant: Variant; classNa
   const cycle = useReplay();
   const Art = variant === "disciplines" ? Disciplines : variant === "denmark" ? Denmark : Wireframe;
   return (
-    <div className={`tw-card-art ${className}`}>
+    <div className={`tw-card-art tw-card-art--${variant} ${className}`}>
       <Art key={cycle} />
     </div>
   );

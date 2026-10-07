@@ -4,14 +4,21 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  /* Same coral tokens on every card; angle + glow position vary per variant */
+  --tw-angle: 90deg;
+  --tw-glow: 18% 22%;
   background:
     radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1.3px) 0 0 / 14px 14px,
+    radial-gradient(circle at var(--tw-glow), rgba(255, 255, 255, 0.22), transparent 60%),
     linear-gradient(
-      to right,
+      var(--tw-angle),
       var(--bright\/coral\/400, #ff8a6c) 0%,
       var(--bright\/coral\/500, #ff6b4a) 50%,
       var(--bright\/coral\/600, #e8533a) 100%
     );
+}
+.tw-card-art--denmark { --tw-angle: 155deg; --tw-glow: 82% 18%; }
+.tw-card-art--wireframe { --tw-angle: 35deg; --tw-glow: 25% 85%;
 }
 .tw-card-art svg {
   position: absolute;
