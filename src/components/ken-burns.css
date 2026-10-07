@@ -1,0 +1,36 @@
+/* Ken Burns photo effect — used by KenBurnsImage.tsx */
+.tw-kb {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.tw-kb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: var(--kb-focus, 50% 50%);
+  will-change: transform;
+}
+.tw-kb.is-on img {
+  animation-duration: var(--kb-dur, 4s);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.tw-kb--zoom.is-on img { animation-name: tw-kb-zoom; }
+.tw-kb--pan-left.is-on img { animation-name: tw-kb-pan; }
+.tw-kb--pan-right.is-on img { animation-name: tw-kb-pan; animation-direction: alternate-reverse; }
+
+@keyframes tw-kb-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+@keyframes tw-kb-pan {
+  from { transform: scale(1.08) translateX(2.5%); }
+  to { transform: scale(1.08) translateX(-2.5%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-kb img { animation: none !important; transform: none; }
+}
