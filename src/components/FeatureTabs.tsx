@@ -1,5 +1,5 @@
 import type { GatheringTab } from "../data/gatherings";
-import { ImagePlaceholder } from "./ImagePlaceholder";
+import { KenBurnsImage } from "./KenBurnsImage";
 
 interface FeatureTabsProps {
   tabs: GatheringTab[];
@@ -84,7 +84,13 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
             {/* Full column width, 16:9 — e.g. 482px tall at the 856px column
                 width the right column renders at on a 1440px viewport. */}
             <div className="w-full overflow-hidden rounded-[var(--radius-lg)]" style={{ aspectRatio: "16 / 9" }}>
-              <ImagePlaceholder variant="coral" className="h-full w-full" />
+              <KenBurnsImage
+                src={tab.image}
+                alt={tab.imageAlt}
+                motion={tab.motion}
+                focus={tab.focus}
+                className="h-full w-full"
+              />
             </div>
           </div>
         ))}
@@ -105,7 +111,13 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
             </div>
             {/* Full-bleed: breaks out of the section's own px-6/sm:px-10 padding. */}
             <div className="-mx-6 h-[300px] overflow-hidden sm:-mx-10">
-              <ImagePlaceholder variant="coral" className="h-full w-full" />
+              <KenBurnsImage
+                src={tab.image}
+                alt={tab.imageAlt}
+                motion={tab.motion}
+                focus={tab.focus}
+                className="h-full w-full"
+              />
             </div>
             <div className="flex flex-col gap-6 pl-20">
               <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>
