@@ -1,10 +1,10 @@
 import type { Program } from "../data/programs";
-import { ImagePlaceholder } from "./ImagePlaceholder";
+import { CardArt, type Variant } from "./CardArt";
 
 // Format_Card, Stacked layout: image top, then kicker/title/description.
 // One parameterized component driven by data (src/data/programs.ts) rather
 // than a hand-authored function per card.
-export function FormatCard({ program }: { program: Program }) {
+export function FormatCard({ program, artVariant }: { program: Program; artVariant: Variant }) {
   return (
     <div
       className="flex h-full flex-1 flex-col overflow-hidden rounded-[var(--radius-md)] border"
@@ -15,7 +15,7 @@ export function FormatCard({ program }: { program: Program }) {
       }}
     >
       <div className="relative h-[220px] w-full sm:h-[280px]">
-        <ImagePlaceholder variant="coral" className="h-full w-full" />
+        <CardArt variant={artVariant} className="h-full w-full" />
       </div>
       <div className="flex flex-col gap-4 p-6 sm:p-8">
         <p className="text-kicker" style={{ color: "var(--color-accent-coral)" }}>
