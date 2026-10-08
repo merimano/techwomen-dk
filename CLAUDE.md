@@ -43,9 +43,10 @@ reintroduce that bug by moving button state handling into JS/React state.
 2. **Photography** — every photo slot (`ImagePlaceholder`) is a token-based
    gradient stand-in, not a real image. Figma's exported asset URLs expire
    ~7 days after export and this environment couldn't fetch/persist the
-   originals. Slots that need real photos: 5 team headshots, 3 program
-   card images (Panel Talks / AI Masterclasses / AI Lab), 1 mentorship
-   visual. Drop files into `src/assets/images/` and swap
+   originals. Slots that need real photos: 3 program card images
+   (Panel Talks / AI Masterclasses / AI Lab), 1 mentorship visual.
+   (Team headshots are done — real photos in `public/images/team/`, all
+   cut out onto the same `--color-warm-200` background.) Drop files into `src/assets/images/` and swap
    `<ImagePlaceholder>` for `<img>` — nothing else needs to change.
 3. **Mission section animation** — Figma has this as a word-by-word reveal
    (motion data available via `get_motion_context`, not yet pulled in).
