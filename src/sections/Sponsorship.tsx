@@ -24,7 +24,7 @@ export function Sponsorship() {
             ))}
           </div>
           <div className="flex flex-col items-center gap-3 text-center">
-            <ButtonSecondary href="mailto:hello@techwomencph.dk?subject=Partner%20deck%20request">
+            <ButtonSecondary href={sponsorshipIntro.deckCtaHref} target="_blank" rel="noopener noreferrer">
               {sponsorshipIntro.deckCtaLabel}
             </ButtonSecondary>
             <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>

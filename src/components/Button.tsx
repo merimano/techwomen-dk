@@ -54,6 +54,8 @@ export function ButtonPrimary({
 interface ButtonSecondaryProps {
   children: ReactNode;
   href?: string;
+  target?: string;
+  rel?: string;
   onClick?: () => void;
   /** "coral" (default, brand action) or "neutral" (blends into a neutral card) */
   tone?: "coral" | "neutral";
@@ -66,6 +68,8 @@ interface ButtonSecondaryProps {
 export function ButtonSecondary({
   children,
   href,
+  target,
+  rel,
   onClick,
   tone = "coral",
   className,
@@ -83,7 +87,7 @@ export function ButtonSecondary({
 
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} target={target} rel={rel} className={classes}>
         {content}
       </a>
     );
