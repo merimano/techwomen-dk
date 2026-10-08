@@ -13,6 +13,7 @@ export const sponsorshipIntro = {
   pitch: "This community brings together women across engineering, product, design, and leadership roles in Copenhagen. Companies partner with us to reach a concentrated, engaged audience of local talent, build employer brand, and support a more inclusive tech ecosystem.",
   // Sponsorship_CTA (Figma node 817:897).
   deckCtaLabel: "Request our partner deck",
+  deckCtaHref: "https://fccjex7fdek.typeform.com/to/tfcjXRxG",
   deckNote: "Full tiers, pricing, and activation details are included in the PDF.",
 };
 
