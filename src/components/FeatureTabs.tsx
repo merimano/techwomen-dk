@@ -68,29 +68,25 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
       {/* Desktop/lg steps — tracked by registerStepRef for the scroll-spy math. */}
       <div className="hidden w-full flex-1 flex-col gap-24 lg:flex">
         {tabs.map((tab, index) => (
-          <div
-            key={tab.id}
-            ref={(el) => registerStepRef(index, el)}
-            className="flex flex-col items-start gap-6 lg:gap-8"
-          >
-            <div className="flex flex-col items-start gap-4">
-              <h3 className="text-heading-3" style={{ color: "var(--color-text-primary)" }}>
-                {tab.title}
-              </h3>
-              <p className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
-                {tab.description}
-              </p>
-            </div>
-            {/* Full column width, 16:9 — e.g. 482px tall at the 856px column
-                width the right column renders at on a 1440px viewport. */}
-            <div className="w-full overflow-hidden rounded-[var(--radius-lg)]" style={{ aspectRatio: "16 / 9" }}>
-              <KenBurnsImage
-                src={tab.image}
-                alt={tab.imageAlt}
-                motion={tab.motion}
-                focus={tab.focus}
-                className="h-full w-full"
-              />
+          <div key={tab.id} ref={(el) => registerStepRef(index, el)} className="flex w-full flex-col items-start">
+            <div className="flex w-full max-w-[720px] flex-col items-start gap-6 lg:gap-8">
+              <div className="flex flex-col items-start gap-4">
+                <h3 className="text-heading-3" style={{ color: "var(--color-text-primary)" }}>
+                  {tab.title}
+                </h3>
+                <p className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
+                  {tab.description}
+                </p>
+              </div>
+              <div className="w-full overflow-hidden rounded-[var(--radius-lg)]" style={{ aspectRatio: "16 / 10" }}>
+                <KenBurnsImage
+                  src={tab.image}
+                  alt={tab.imageAlt}
+                  motion={tab.motion}
+                  focus={tab.focus}
+                  className="h-full w-full"
+                />
+              </div>
             </div>
           </div>
         ))}
