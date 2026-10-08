@@ -5,6 +5,8 @@ interface ButtonPrimaryProps {
   children: ReactNode;
   size?: "normal" | "small";
   href?: string;
+  target?: string;
+  rel?: string;
   type?: "button" | "submit";
   onClick?: () => void;
   disabled?: boolean;
@@ -19,6 +21,8 @@ export function ButtonPrimary({
   children,
   size = "normal",
   href,
+  target,
+  rel,
   type = "button",
   onClick,
   disabled,
@@ -34,7 +38,7 @@ export function ButtonPrimary({
 
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} target={target} rel={rel} className={classes}>
         {children}
       </a>
     );

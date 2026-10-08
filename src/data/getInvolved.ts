@@ -9,6 +9,7 @@ export const getInvolved = {
     description:
       "Whether you want to lead a workshop, join an expert panel, or host a community meetup at your office space, there's a place for your contribution here.",
     ctaLabel: "Get involved",
+    ctaHref: "https://fccjex7fdek.typeform.com/to/qoYAnua4",
   },
   opportunities: [
     {

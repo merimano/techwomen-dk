@@ -44,7 +44,12 @@ export function GetInvolved() {
               ))}
             </div>
           </div>
-          <ButtonPrimary href="#membership" className="self-start">
+          <ButtonPrimary
+            href={getInvolved.cta.ctaHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="self-start"
+          >
             {getInvolved.cta.ctaLabel}
           </ButtonPrimary>
         </div>
