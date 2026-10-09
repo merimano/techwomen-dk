@@ -6,14 +6,36 @@
 // the hero/Testimonial_Card stragglers). We use `--color-text-secondary` on
 // the dark background here instead, adjusted for contrast; flag the stray
 // token to the design-system owner.
+export interface FooterLink {
+  label: string;
+  href?: string;
+}
+
 export const footer = {
   logoLabel: "TechWomen DK",
   tagline:
     "Copenhagen's premier community backing and elevating local women developers, designers, product leads, and tech entrepreneurs.",
   columns: [
-    { heading: "Community", links: ["About", "Events", "Mentorship"] },
-    { heading: "Partner", links: ["Sponsors", "Host a workshop", "Apply to speak"] },
-    { heading: "Connect", links: ["hello@techwomencph.dk", "Copenhagen, Denmark", "Slack Community"] },
+    {
+      heading: "Community",
+      links: [{ label: "About" }, { label: "Events" }, { label: "Mentorship" }] as FooterLink[],
+    },
+    {
+      heading: "Partner",
+      links: [
+        { label: "Sponsors" },
+        { label: "Host a workshop", href: "#get-involved" },
+        { label: "Apply to speak" },
+      ] as FooterLink[],
+    },
+    {
+      heading: "Connect",
+      links: [
+        { label: "hello@techwomencph.dk" },
+        { label: "Copenhagen, Denmark" },
+        { label: "Slack Community" },
+      ] as FooterLink[],
+    },
   ],
   copyright: "© 2026 TechWomen DK. All rights reserved.",
   legalLinks: ["Privacy Policy", "GDPR Compliance"],
