@@ -18,11 +18,17 @@ export function Footer() {
             {footer.columns.map((col) => (
               <div key={col.heading} className="flex flex-col gap-4">
                 <p className="font-bold text-white">{col.heading.toUpperCase()}</p>
-                {col.links.map((link) => (
-                  <p key={link} className="text-white/60">
-                    {link}
-                  </p>
-                ))}
+                {col.links.map((link) =>
+                  link.href ? (
+                    <a key={link.label} href={link.href} className="text-white/60 transition-colors hover:text-white/80">
+                      {link.label}
+                    </a>
+                  ) : (
+                    <p key={link.label} className="text-white/60">
+                      {link.label}
+                    </p>
+                  ),
+                )}
               </div>
             ))}
           </div>
