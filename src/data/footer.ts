@@ -9,23 +9,27 @@
 export interface FooterLink {
   label: string;
   href?: string;
+  external?: boolean;
 }
 
 export const footer = {
   logoLabel: "TechWomen DK",
-  tagline:
-    "Copenhagen's premier community backing and elevating local women developers, designers, product leads, and tech entrepreneurs.",
+  tagline: "We back women who build, shape and lead tech in Denmark.",
   columns: [
     {
       heading: "Community",
-      links: [{ label: "About" }, { label: "Events" }, { label: "Mentorship" }] as FooterLink[],
+      links: [
+        { label: "About", href: "#about" },
+        { label: "Events", href: "#gatherings" },
+        { label: "Mentorship", href: "#mentorship-program" },
+      ] as FooterLink[],
     },
     {
       heading: "Partner",
       links: [
-        { label: "Sponsors" },
+        { label: "Sponsors", href: "#sponsorship" },
         { label: "Host a workshop", href: "#get-involved" },
-        { label: "Apply to speak" },
+        { label: "Apply to speak", href: "#get-involved" },
       ] as FooterLink[],
     },
     {
@@ -33,7 +37,7 @@ export const footer = {
       links: [
         { label: "hello@techwomencph.dk" },
         { label: "Copenhagen, Denmark" },
-        { label: "Slack Community" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/techwomen-cph/", external: true },
       ] as FooterLink[],
     },
   ],

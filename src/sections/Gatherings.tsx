@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { gatheringsIntro, gatheringTabs } from "../data/gatherings";
 import { SectionHeader } from "../components/SectionHeader";
 import { FeatureTabs } from "../components/FeatureTabs";
@@ -15,6 +15,7 @@ const BREATHING_ROOM = 24;
 // pin/unpin, so the nav scrolls away naturally once the last step ends.
 export function Gatherings() {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const mobileStepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [navOffset, setNavOffset] = useState(96);
   const [progress, setProgress] = useState<number[]>(() => gatheringTabs.map(() => 0));
   const [activeIndex, setActiveIndex] = useState(0);
@@ -58,14 +59,37 @@ export function Gatherings() {
     };
   }, []);
 
-  const handleSelect = (id: string) => {
-    const index = gatheringTabs.findIndex((tab) => tab.id === id);
-    const el = stepRefs.current[index];
-    if (!el) return;
-    const target = el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: target, behavior: reduceMotion ? "auto" : "smooth" });
-  };
+  const handleSelect = useCallback(
+    (id: string) => {
+      const index = gatheringTabs.findIndex((tab) => tab.id === id);
+      const desktopEl = stepRefs.current[index];
+      // The desktop steps stay mounted (just display:none) below `lg`, where
+      // getBoundingClientRect() would return an all-zero rect — fall back to
+      // the mobile card, whichever is actually laid out right now.
+      const el = desktopEl && desktopEl.getClientRects().length > 0 ? desktopEl : mobileStepRefs.current[index];
+      if (!el) return;
+      // Land the step's heading right where the sticky nav pins, not centered
+      // mid-screen — the step is then fully visible from the top, same as the
+      // sticky nav's own resting position.
+      const target = el.getBoundingClientRect().top + window.scrollY - navOffset;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: target, behavior: reduceMotion ? "auto" : "smooth" });
+    },
+    [navOffset],
+  );
+
+  // Deep links to a specific gathering, e.g. the footer's "Mentorship" link
+  // (#mentorship-program) — reuses handleSelect's scroll math, which picks
+  // whichever of the desktop/mobile renderings is actually laid out.
+  useEffect(() => {
+    const scrollToHash = () => {
+      const id = window.location.hash.slice(1);
+      if (gatheringTabs.some((tab) => tab.id === id)) handleSelect(id);
+    };
+    scrollToHash();
+    window.addEventListener("hashchange", scrollToHash);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, [handleSelect]);
 
   const activeTab = gatheringTabs[activeIndex] ?? gatheringTabs[0];
 
@@ -92,6 +116,9 @@ export function Gatherings() {
             onSelect={handleSelect}
             registerStepRef={(index, el) => {
               stepRefs.current[index] = el;
+            }}
+            registerMobileStepRef={(index, el) => {
+              mobileStepRefs.current[index] = el;
             }}
           />
         </div>
