@@ -20,7 +20,13 @@ export function Footer() {
                 <p className="font-bold text-white">{col.heading.toUpperCase()}</p>
                 {col.links.map((link) =>
                   link.href ? (
-                    <a key={link.label} href={link.href} className="text-white/60 transition-colors hover:text-white/80">
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      className="text-white/60 transition-colors hover:text-white/80"
+                    >
                       {link.label}
                     </a>
                   ) : (

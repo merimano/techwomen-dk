@@ -10,6 +10,9 @@ interface FeatureTabsProps {
   navOffset: number;
   onSelect: (id: string) => void;
   registerStepRef: (index: number, el: HTMLDivElement | null) => void;
+  /** Below-lg card refs — not used by the scroll-spy, only so a deep link (e.g. the footer's
+   * Mentorship link) can still find a scroll target when the desktop steps are display:none. */
+  registerMobileStepRef: (index: number, el: HTMLDivElement | null) => void;
 }
 
 // Feature_Tabs_Section — a sticky nav (left) with a per-item scroll-progress
@@ -22,7 +25,15 @@ interface FeatureTabsProps {
 // menu — each gathering instead renders as its own editorial card (Figma
 // node 813:795: numbered kicker, heading, full-bleed photo, indented
 // description + rule), one per gathering, in plain scroll order.
-export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, registerStepRef }: FeatureTabsProps) {
+export function FeatureTabs({
+  tabs,
+  activeId,
+  progress,
+  navOffset,
+  onSelect,
+  registerStepRef,
+  registerMobileStepRef,
+}: FeatureTabsProps) {
   return (
     <div className="flex w-full flex-col lg:flex-row lg:items-start lg:gap-16">
       <nav
@@ -92,11 +103,11 @@ export function FeatureTabs({ tabs, activeId, progress, navOffset, onSelect, reg
         ))}
       </div>
 
-      {/* Below-lg editorial cards — no scroll-spy, no ref (nothing on this
-          breakpoint reads step position), just plain stacked content. */}
+      {/* Below-lg editorial cards — no scroll-spy nav here, but still ref'd
+          so a deep link can find its target at this breakpoint too. */}
       <div className="flex w-full flex-col gap-12 lg:hidden">
         {tabs.map((tab, index) => (
-          <div key={tab.id} className="flex flex-col gap-8">
+          <div key={tab.id} ref={(el) => registerMobileStepRef(index, el)} className="flex flex-col gap-8">
             <div className="flex flex-col gap-3">
               <p className="text-kicker" style={{ color: "var(--color-accent-coral)" }}>
                 {String(index + 1).padStart(2, "0")} / {tab.tabLabel.toUpperCase()}
