@@ -17,4 +17,5 @@ export const team: TeamMember[] = [
   { name: "Cecilia Battinelli", role: "Board Member & AI Lab Lead", photo: "/images/team/cecilia-battinelli.jpeg" },
   { name: "Ayshe Dzambazova", role: "Board Member & Mentorship Program Lead", photo: "/images/team/ayshe-dzambazova.png" },
   { name: "Silja Sundstein", role: "Board Member & Treasurer", photo: "/images/team/silja-sundstein.jpeg" },
+  { name: "Candela Glikin", role: "Mentorship Program Events", photo: "/images/team/candela-glikin.png" },
 ];

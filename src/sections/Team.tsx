@@ -11,9 +11,9 @@ export function Team() {
           title="Powered by our community"
           description="Everything we do is shaped by the people who show up — as board members, gathering hosts, teachers, mentors, attendees, and advocates spreading the word. Our strength lies in every contribution, big and small."
         />
-        {/* Mobile/tablet: fixed-width cards scroll horizontally (Figma node
-            630:740) instead of wrapping into a flexible grid. */}
-        <div className="flex gap-4 overflow-x-auto sm:flex-wrap sm:overflow-visible">
+        {/* Fixed-width cards stay on one row and scroll horizontally at
+            every breakpoint (Figma node 630:740), rather than wrapping. */}
+        <div className="flex gap-4 overflow-x-auto">
           {team.map((member) => (
             <TeamCard key={member.name} member={member} />
           ))}
