@@ -3,7 +3,6 @@ import { Hero } from "./sections/Hero";
 import { StatsBanner } from "./sections/StatsBanner";
 import { WhatWeDo } from "./sections/WhatWeDo";
 import { Gatherings } from "./sections/Gatherings";
-import { Events } from "./sections/Events";
 import { Mission } from "./sections/Mission";
 import { Team } from "./sections/Team";
 import { GetInvolved } from "./sections/GetInvolved";
@@ -21,7 +20,7 @@ export default function App() {
         <WhatWeDo />
         <Mission />
         <Gatherings />
-        <Events />
+        {/* "On the calendar" (Events) stays hidden per request. */}
         <Membership />
         <GetInvolved />
         <Sponsorship />
