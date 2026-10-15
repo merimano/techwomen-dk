@@ -48,10 +48,7 @@ reintroduce that bug by moving button state handling into JS/React state.
    (Team headshots are done — real photos in `public/images/team/`, all
    cut out onto the same `--color-warm-200` background.) Drop files into `src/assets/images/` and swap
    `<ImagePlaceholder>` for `<img>` — nothing else needs to change.
-3. **Mission section animation** — Figma has this as a word-by-word reveal
-   (motion data available via `get_motion_context`, not yet pulled in).
-   Rendered as static text for now.
-4. `--bright/text-footer` in Figma still resolves to a stale pre-token-update
+3. `--bright/text-footer` in Figma still resolves to a stale pre-token-update
    hex (`#8c6e62`) — not carried over; the footer uses `text-secondary`-level
    contrast against the dark background instead.
 

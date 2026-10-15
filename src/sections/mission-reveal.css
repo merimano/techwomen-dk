@@ -1,0 +1,40 @@
+/* Mission statement word-by-word reveal (Figma node 543:9038) */
+.tw-mission-reveal {
+  opacity: 0;
+  transform: translateY(var(--rise-from, 20px));
+}
+.tw-mission.is-on .tw-mission-reveal {
+  animation:
+    tw-mission-fade var(--dur, 500ms) ease-out both,
+    tw-mission-rise var(--dur, 500ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+.tw-mission-word {
+  display: inline-block;
+}
+@keyframes tw-mission-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes tw-mission-rise {
+  from {
+    transform: translateY(var(--rise-from, 20px));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-mission-reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .tw-mission.is-on .tw-mission-reveal {
+    animation: none;
+  }
+}
