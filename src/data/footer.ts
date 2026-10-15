@@ -35,12 +35,14 @@ export const footer = {
     {
       heading: "Connect",
       links: [
-        { label: "hello@techwomencph.dk" },
-        { label: "Copenhagen, Denmark" },
         { label: "LinkedIn", href: "https://www.linkedin.com/company/techwomen-cph/", external: true },
+        { label: "MeetUp", href: "https://www.meetup.com/woman-in-tech-cph/", external: true },
       ] as FooterLink[],
     },
   ],
   copyright: "© 2026 TechWomen DK. All rights reserved.",
-  legalLinks: ["Privacy Policy", "GDPR Compliance"],
+  legalLinks: [
+    { label: "Privacy Policy" },
+    { label: "AoA", href: "/documents/articles-of-association.pdf", external: true },
+  ] as FooterLink[],
 };
