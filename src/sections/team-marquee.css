@@ -1,0 +1,24 @@
+/* Team section infinite marquee */
+.tw-marquee {
+  overflow: hidden;
+}
+.tw-marquee-track {
+  width: max-content;
+  animation: tw-marquee 36s linear infinite;
+}
+.tw-marquee:hover .tw-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes tw-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-marquee-track {
+    animation: none;
+  }
+}
