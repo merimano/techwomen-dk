@@ -45,9 +45,21 @@ export function Footer() {
         <div className="flex flex-col gap-4 text-[13px] text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <p>{footer.copyright}</p>
           <div className="flex gap-6">
-            {footer.legalLinks.map((link) => (
-              <p key={link}>{link}</p>
-            ))}
+            {footer.legalLinks.map((link) =>
+              link.href ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  className="transition-colors hover:text-white/80"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <p key={link.label}>{link.label}</p>
+              ),
+            )}
           </div>
         </div>
       </div>
