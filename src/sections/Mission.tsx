@@ -43,7 +43,7 @@ export function Mission() {
   const words = mission.statement.split(" ");
 
   return (
-    <section className="px-6 py-16 sm:px-10" style={{ backgroundColor: "var(--color-warm-100)" }}>
+    <section className="px-6 py-16 sm:px-10 lg:py-[160px]" style={{ backgroundColor: "var(--color-warm-100)" }}>
       <div className="mx-auto flex max-w-7xl flex-col lg:px-10">
         <div ref={ref} className={`tw-mission flex max-w-4xl flex-col gap-6 ${isOn ? "is-on" : ""}`}>
           <p
