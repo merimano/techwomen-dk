@@ -1,0 +1,12 @@
+/* Dot grid spotlight: a second copy of the dot pattern, masked to a soft
+   circle that follows the cursor (desktop only, see useCursorSpotlight),
+   brightening the grid locally instead of redrawing it. */
+.tw-dot-grid-spotlight {
+  opacity: 0;
+  transition: opacity 200ms ease;
+  -webkit-mask-image: radial-gradient(circle 160px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 160px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
+}
+.tw-dot-grid-spotlight.is-active {
+  opacity: 0.55;
+}

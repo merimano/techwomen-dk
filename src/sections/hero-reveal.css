@@ -1,16 +1,3 @@
-/* Dot grid spotlight: a second copy of the dot pattern, masked to a soft
-   circle that follows the cursor (desktop only, see Hero.tsx), brightening
-   the grid locally instead of redrawing it. */
-.tw-hero-dot-spotlight {
-  opacity: 0;
-  transition: opacity 200ms ease;
-  -webkit-mask-image: radial-gradient(circle 160px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
-  mask-image: radial-gradient(circle 160px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
-}
-.tw-hero-dot-spotlight.is-active {
-  opacity: 0.55;
-}
-
 /* Hero headline: each line slides up from behind a mask and fades in. */
 .tw-hero-line-mask {
   display: block;

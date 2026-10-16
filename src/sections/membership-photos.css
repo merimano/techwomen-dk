@@ -1,0 +1,52 @@
+/* Photo stack entrance: the back card slides in first, then the front card
+   drops on top with a slight overshoot — like a photo landing on a pile. */
+.tw-membership-photo-back {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.tw-membership-photos.is-on .tw-membership-photo-back {
+  animation: tw-membership-photo-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes tw-membership-photo-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tw-membership-photo-front {
+  opacity: 0;
+  transform: translateY(50px) scale(0.92);
+}
+.tw-membership-photos.is-on .tw-membership-photo-front {
+  /* A "back ease" curve overshoots past the resting transform before
+     settling — the drop/landing bounce, without hand-rolled keyframes. */
+  animation: tw-membership-photo-drop 600ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 300ms;
+}
+@keyframes tw-membership-photo-drop {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-membership-photo-back,
+  .tw-membership-photo-front {
+    opacity: 1;
+    transform: none;
+  }
+  .tw-membership-photos.is-on .tw-membership-photo-back,
+  .tw-membership-photos.is-on .tw-membership-photo-front {
+    animation: none;
+  }
+}
