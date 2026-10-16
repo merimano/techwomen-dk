@@ -1,0 +1,92 @@
+/* Roles list: each item fades/rises in, top to bottom, ~100ms apart. */
+.tw-roles-item {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.tw-roles.is-on .tw-roles-item {
+  animation: tw-roles-item-in 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes tw-roles-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dividers: each line draws left-to-right across the gap between one role
+   appearing and the next — so the list reads as built, not just shown. */
+.tw-roles-divider {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.tw-roles.is-on .tw-roles-divider {
+  /* Duration matches ROLE_STAGGER_MS in GetInvolved.tsx — the draw spans
+     exactly the gap so it finishes right as the next role starts fading in. */
+  animation: tw-roles-divider-in 100ms linear both;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes tw-roles-divider-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Row hover: nudges right, kicker shifts to the coral hover shade, a
+   trailing arrow slides in, and every other row dims slightly. The nudge/
+   arrow/dim live on .tw-roles-item-inner (not .tw-roles-item itself), so
+   they never fight that element's own entrance-animation transform. */
+.tw-roles-item-inner {
+  transition:
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+.tw-roles-item:hover .tw-roles-item-inner {
+  transform: translateX(4px);
+}
+.tw-roles:has(.tw-roles-item:hover) .tw-roles-item:not(:hover) .tw-roles-item-inner {
+  opacity: 0.6;
+}
+.tw-roles-item-kicker {
+  transition: color 200ms ease;
+}
+.tw-roles-item:hover .tw-roles-item-kicker {
+  color: var(--color-accent-coral-hover);
+}
+.tw-roles-item-arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+.tw-roles-item:hover .tw-roles-item-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-roles-item {
+    opacity: 1;
+    transform: none;
+  }
+  .tw-roles-divider {
+    transform: none;
+  }
+  .tw-roles.is-on .tw-roles-item,
+  .tw-roles.is-on .tw-roles-divider {
+    animation: none;
+  }
+  .tw-roles-item-inner,
+  .tw-roles-item-kicker,
+  .tw-roles-item-arrow {
+    transition: none;
+  }
+}
