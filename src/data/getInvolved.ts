@@ -22,7 +22,12 @@ export const getInvolved = {
     },
     {
       label: "03 / Event host",
-      description: "Open your workspace to Copenhagen developers for vibrant networking nights or hackathons.",
+      description: "Open your workspace to the community for vibrant networking nights or hackathons.",
+    },
+    {
+      label: "04 / Open contribution",
+      description:
+        "Have a skill, idea or resource that doesn't fit the roles above? Tell us, and we'll find the right place for it together.",
     },
   ],
 };
