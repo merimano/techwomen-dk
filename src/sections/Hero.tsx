@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { hero } from "../data/nav";
 import { ButtonPrimary } from "../components/Button";
+import { DotGrid } from "../components/DotGrid";
+import { useCursorSpotlight } from "../components/useCursorSpotlight";
 import "./hero-reveal.css";
 
 // Headline reveal: each line slides up ~20px from behind a mask and fades
@@ -43,31 +45,9 @@ export function Hero() {
     setIsOn(true);
   }, []);
 
-  // Dot grid brightens around the cursor — desktop (fine pointer + hover)
-  // only, so it never fires from a touch tap.
+  // Dot grid brightens around the cursor — desktop only (see DotGrid).
   const heroRef = useRef<HTMLElement>(null);
-  const [cursorActive, setCursorActive] = useState(false);
-
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-      el.style.setProperty("--my", `${e.clientY - rect.top}px`);
-    };
-    const onEnter = () => setCursorActive(true);
-    const onLeave = () => setCursorActive(false);
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseenter", onEnter);
-      el.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
+  const cursorActive = useCursorSpotlight(heroRef);
 
   return (
     <section
@@ -75,22 +55,7 @@ export function Hero() {
       ref={heroRef}
       className="relative flex min-h-[calc(100svh-72px)] flex-col items-center justify-center gap-16 overflow-hidden px-6 py-16 text-center sm:px-10"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.16]"
-        style={{
-          backgroundImage: "radial-gradient(var(--color-warm-600) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className={`tw-hero-dot-spotlight pointer-events-none absolute inset-0 ${cursorActive ? "is-active" : ""}`}
-        style={{
-          backgroundImage: "radial-gradient(var(--color-warm-600) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
+      <DotGrid cursorActive={cursorActive} />
       <div
         aria-hidden="true"
         className="tw-hero-glow pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[600px] rounded-full blur-3xl"
