@@ -81,7 +81,7 @@ export function ButtonSecondary({
   const content = (
     <>
       <span>{children}</span>
-      <ArrowIcon className="size-5 shrink-0" />
+      <ArrowIcon className="btn-secondary-arrow size-5 shrink-0" />
     </>
   );
 

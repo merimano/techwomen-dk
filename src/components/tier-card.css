@@ -1,0 +1,18 @@
+/* Tier card hover: lifts slightly, shadow deepens, border tints coral. */
+.tw-tier-card-surface {
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+.tw-tier-card-surface:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-warm);
+  border-color: var(--color-coral-200);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-tier-card-surface {
+    transition: none;
+  }
+}
