@@ -210,6 +210,12 @@
     color: var(--color-accent-coral-hover);
     text-decoration: underline;
   }
+  .btn-secondary-arrow {
+    transition: transform 0.2s ease;
+  }
+  .btn-secondary:hover .btn-secondary-arrow {
+    transform: translateX(4px);
+  }
   .btn-secondary:active {
     color: #cc3d28;
   }

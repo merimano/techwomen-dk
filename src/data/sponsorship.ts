@@ -10,7 +10,7 @@ export const sponsorshipIntro = {
   title: "Join us in shaping a more inclusive and innovative tech future",
   // Sponsorship_Pitch (Figma node 817:884). Its second paragraph (pricing/
   // deck details) was dropped — that's now covered by the CTA block below.
-  pitch: "This community brings together women across engineering, product, design, and leadership roles in Copenhagen. Companies partner with us to reach a concentrated, engaged audience of local talent, build employer brand, and support a more inclusive tech ecosystem.",
+  pitch: "This community brings together women across engineering, product, design, and leadership roles across Denmark. Companies partner with us to reach a concentrated, engaged audience of local talent, build employer brand, and support a more inclusive tech ecosystem.",
   // Sponsorship_CTA (Figma node 817:897).
   deckCtaLabel: "Request our partner deck",
   deckCtaHref: "https://fccjex7fdek.typeform.com/to/tfcjXRxG",
