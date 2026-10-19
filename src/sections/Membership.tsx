@@ -104,7 +104,9 @@ export function Membership() {
           <p className="text-body-large" style={{ color: "var(--color-text-secondary)" }}>
             {membership.description}
           </p>
-          <ButtonPrimary href={membership.ctaHref}>{membership.ctaLabel}</ButtonPrimary>
+          <ButtonPrimary href={membership.ctaHref} target="_blank" rel="noopener noreferrer">
+            {membership.ctaLabel}
+          </ButtonPrimary>
         </div>
 
         <div

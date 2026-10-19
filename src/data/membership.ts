@@ -5,8 +5,7 @@ export const membership = {
   description:
     "A vibrant community of women in tech across Denmark is coming soon. Join the waitlist to be the first to hear when TechWomen DK membership launches.",
   ctaLabel: "Join the waitlist",
-  // TODO: point at the real waitlist form once one exists.
-  ctaHref: "#membership",
+  ctaHref: "https://forms.gle/5T1vL96VXkDstJQ99",
   visual: [
     {
       src: "/images/membership/community-1.jpg",
