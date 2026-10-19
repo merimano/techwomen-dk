@@ -103,7 +103,7 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce), (max-width: 639.98px) {
   .tw-hero-line,
   .tw-hero-subline,
   .tw-hero-cta {
