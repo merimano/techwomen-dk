@@ -48,7 +48,7 @@ export function WaitlistForm({
     setErrorMsg("");
 
     const body = new URLSearchParams({
-      firstName: String(data.get("firstName") ?? ""),
+      fullName: String(data.get("fullName") ?? ""),
       email: String(data.get("email") ?? ""),
       consent: data.get("consent") ? "true" : "false",
       consentText: CONSENT_TEXT,
@@ -101,8 +101,8 @@ export function WaitlistForm({
 
       <div className="waitlist__row">
         <label className="waitlist__field">
-          First name
-          <input className="form-input" name="firstName" type="text" autoComplete="given-name" required maxLength={100} />
+          Full name
+          <input className="form-input" name="fullName" type="text" autoComplete="name" required maxLength={100} />
         </label>
         <label className="waitlist__field">
           Email

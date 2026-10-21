@@ -8,7 +8,7 @@ import "./GetInvolvedForm.css";
 // mostly closed questions. Saves to the "Get involved" tab of the sheet.
 
 interface Answers {
-  firstName: string;
+  fullName: string;
   email: string;
   linkedin: string;
   field: string;
@@ -36,7 +36,7 @@ const LAST_STEP = copy.steps.length - 1;
 export function GetInvolvedForm({ initialRoles = [], onSuccess }: GetInvolvedFormProps) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({
-    firstName: "",
+    fullName: "",
     email: "",
     linkedin: "",
     field: "",
@@ -62,10 +62,10 @@ export function GetInvolvedForm({ initialRoles = [], onSuccess }: GetInvolvedFor
   function validate(s: number): Errors {
     const e: Errors = {};
     if (s === 0) {
-      if (!answers.firstName.trim()) e.firstName = "Enter your first name.";
+      if (!answers.fullName.trim()) e.fullName = "Enter your full name.";
       if (!EMAIL_RE.test(answers.email.trim())) e.email = "Enter a valid email address.";
-      if (answers.linkedin.trim() && !/linkedin\.com\//i.test(answers.linkedin))
-        e.linkedin = "Paste a LinkedIn profile link, or leave this empty.";
+      if (!answers.linkedin.trim()) e.linkedin = "Paste a link to your LinkedIn profile.";
+      else if (!/linkedin\.com\//i.test(answers.linkedin)) e.linkedin = "That doesn't look like a LinkedIn profile link.";
       if (!answers.field) e.field = "Pick the option closest to your field.";
     }
     if (s === 1 && answers.roles.length === 0) e.roles = "Pick at least one way to contribute.";
@@ -93,7 +93,7 @@ export function GetInvolvedForm({ initialRoles = [], onSuccess }: GetInvolvedFor
     setStatus("submitting");
     const roleLabels = copy.roles.filter((r) => answers.roles.includes(r.id)).map((r) => r.label);
     const result = await submitToSheet("get-involved", {
-      firstName: answers.firstName.trim(),
+      fullName: answers.fullName.trim(),
       email: answers.email.trim(),
       linkedin: answers.linkedin.trim(),
       field: answers.field,
@@ -144,14 +144,14 @@ export function GetInvolvedForm({ initialRoles = [], onSuccess }: GetInvolvedFor
       {step === 0 && (
         <>
           <div className="gi-row">
-            <TextField label="First name" error={errors.firstName}>
+            <TextField label="Full name" error={errors.fullName}>
               <input
                 className="form-input"
                 type="text"
-                autoComplete="given-name"
+                autoComplete="name"
                 maxLength={100}
-                value={answers.firstName}
-                onChange={(e) => set("firstName", e.target.value)}
+                value={answers.fullName}
+                onChange={(e) => set("fullName", e.target.value)}
               />
             </TextField>
             <TextField label="Email" error={errors.email}>
@@ -165,7 +165,7 @@ export function GetInvolvedForm({ initialRoles = [], onSuccess }: GetInvolvedFor
               />
             </TextField>
           </div>
-          <TextField label="LinkedIn profile" optional error={errors.linkedin}>
+          <TextField label="LinkedIn profile" error={errors.linkedin}>
             <input
               className="form-input"
               type="url"
@@ -351,7 +351,7 @@ function Choice({
 function Summary({ answers }: { answers: Answers }) {
   const roles = copy.roles.filter((r) => answers.roles.includes(r.id)).map((r) => r.label);
   const rows: [string, string][] = [
-    ["Name", answers.firstName],
+    ["Name", answers.fullName],
     ["Email", answers.email],
     ["Field", answers.field],
     ["Contribute as", roles.join(", ")],

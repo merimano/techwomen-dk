@@ -22,11 +22,11 @@ export function PartnerForm({ tier, onSuccess }: PartnerFormProps) {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
+    const fullName = String(data.get("fullName") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const company = String(data.get("organisation") ?? "").trim();
 
-    if (!name || !company) return setError("Fill in your name and company.");
+    if (!fullName || !company) return setError("Fill in your full name and company.");
     if (!EMAIL_RE.test(email)) return setError("That email address doesn’t look right. Please check it.");
     if (!data.get("consent")) return setError("Tick the box so we can send you the deck.");
 
@@ -34,7 +34,7 @@ export function PartnerForm({ tier, onSuccess }: PartnerFormProps) {
     setStatus("submitting");
     const tierName = sponsorshipTiers.find((t) => t.id === tier)?.name ?? "";
     const result = await submitToSheet("partner", {
-      firstName: name,
+      fullName,
       email,
       organisation: company,
       tier: tierName,
@@ -67,8 +67,8 @@ export function PartnerForm({ tier, onSuccess }: PartnerFormProps) {
   return (
     <form className="waitlist" onSubmit={handleSubmit} noValidate>
       <label className="waitlist__field" style={{ width: "100%" }}>
-        Name
-        <input className="form-input" name="name" type="text" autoComplete="name" maxLength={100} />
+        Full name
+        <input className="form-input" name="fullName" type="text" autoComplete="name" maxLength={100} />
       </label>
       <div className="waitlist__row">
         <label className="waitlist__field">
