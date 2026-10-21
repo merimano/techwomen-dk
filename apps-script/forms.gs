@@ -7,20 +7,20 @@ const SHEET_ID = ''; // leave empty when opened from the sheet (Extensions → A
 const FORMS = {
   waitlist: {
     tab: 'Waitlist',
-    headers: ['Submitted at', 'First name', 'Email', 'Consent given', 'Consent text', 'Source page'],
-    fields: ['firstName', 'email', 'consent', 'consentText', 'source'],
+    headers: ['Submitted at', 'Full name', 'Email', 'Consent given', 'Consent text', 'Source page'],
+    fields: ['fullName', 'email', 'consent', 'consentText', 'source'],
   },
   'get-involved': {
     tab: 'Get involved',
-    headers: ['Submitted at', 'First name', 'Email', 'LinkedIn', 'Field', 'Contribute as', 'Topics',
+    headers: ['Submitted at', 'Full name', 'Email', 'LinkedIn', 'Field', 'Contribute as', 'Topics',
       'Experience', 'How often', 'Anything else', 'Consent given', 'Consent text', 'Source page'],
-    fields: ['firstName', 'email', 'linkedin', 'field', 'roles', 'topics',
+    fields: ['fullName', 'email', 'linkedin', 'field', 'roles', 'topics',
       'experience', 'availability', 'notes', 'consent', 'consentText', 'source'],
   },
   partner: {
     tab: 'Partners',
-    headers: ['Submitted at', 'Name', 'Work email', 'Company', 'Tier clicked', 'Consent given', 'Consent text', 'Source page'],
-    fields: ['firstName', 'email', 'organisation', 'tier', 'consent', 'consentText', 'source'],
+    headers: ['Submitted at', 'Full name', 'Work email', 'Company', 'Tier clicked', 'Consent given', 'Consent text', 'Source page'],
+    fields: ['fullName', 'email', 'organisation', 'tier', 'consent', 'consentText', 'source'],
   },
 };
 
@@ -32,9 +32,9 @@ function doPost(e) {
     const form = FORMS[p.form || 'waitlist'];
     if (!form) return json({ ok: false, error: 'unknown_form' });
 
-    p.firstName = String(p.firstName || '').trim();
+    p.fullName = String(p.fullName || '').trim();
     p.email = String(p.email || '').trim().toLowerCase();
-    if (!p.firstName) return json({ ok: false, error: 'missing_name' });
+    if (!p.fullName) return json({ ok: false, error: 'missing_name' });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email)) return json({ ok: false, error: 'invalid_email' });
     if (p.consent !== 'true') return json({ ok: false, error: 'missing_consent' });
 
