@@ -1,7 +1,14 @@
 import { footer } from "../data/footer";
 import { LogoDot } from "../components/icons";
 
-export function Footer() {
+interface FooterProps {
+  /** Prefix for "#section" links — "/" on pages other than home. */
+  basePath?: string;
+}
+
+export function Footer({ basePath = "" }: FooterProps) {
+  const resolve = (href: string) => (href.startsWith("#") ? `${basePath}${href}` : href);
+
   return (
     <footer className="px-6 pb-16 pt-20 sm:px-10 lg:px-20" style={{ backgroundColor: "var(--color-warm-1000)" }}>
       <div className="mx-auto flex max-w-7xl flex-col gap-16">
@@ -22,7 +29,7 @@ export function Footer() {
                   link.href ? (
                     <a
                       key={link.label}
-                      href={link.href}
+                      href={resolve(link.href)}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
                       className="text-white/60 transition-colors hover:text-white/80"
@@ -49,7 +56,7 @@ export function Footer() {
               link.href ? (
                 <a
                   key={link.label}
-                  href={link.href}
+                  href={resolve(link.href)}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
                   className="transition-colors hover:text-white/80"
