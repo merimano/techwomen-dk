@@ -1,0 +1,245 @@
+/* Get involved form. Inputs reuse `.form-input`, buttons reuse `.btn-primary`
+   and `.btn-secondary` (index.css); only layout and the choice chips live here. */
+
+.gi-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.gi-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-margin-top: 96px; /* clear the sticky header */
+}
+
+.gi-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.gi-progress__track {
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-warm-200);
+  overflow: hidden;
+}
+
+.gi-progress__bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(to right, #ff8a6c 0%, #ff6b4a 50%, #e8533a 100%);
+  transition: width 0.3s ease;
+}
+
+.gi-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .gi-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gi-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.gi-field .form-input {
+  font-size: 16px; /* stops iOS Safari zooming in on focus */
+  font-weight: 400;
+  padding: 12px 14px;
+}
+
+.gi-field .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.2);
+}
+
+.gi-textarea {
+  resize: vertical;
+  line-height: 24px;
+}
+
+.gi-optional {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.gi-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.gi-group legend {
+  padding: 0;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.gi-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gi-choices--stacked {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .gi-choices--stacked {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Choice chip — the native input stays in place (visually hidden) so
+   keyboard and screen-reader behaviour is the browser's own. */
+.gi-choice {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border: 1px solid var(--color-stroke-subtle);
+  border-radius: var(--radius-full);
+  background-color: var(--color-warm-0);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.gi-choice:hover {
+  border-color: var(--color-coral-300);
+}
+
+.gi-choice input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.gi-choice:has(input:focus-visible) {
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.25);
+}
+
+.gi-choice.is-checked {
+  border-color: var(--color-accent-coral);
+  background-color: var(--color-coral-50);
+  color: var(--color-coral-800);
+  font-weight: 600;
+}
+
+.gi-choice--card {
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+}
+
+.gi-choice__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gi-choice__hint {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.gi-summary {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border: 1px solid var(--color-stroke-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-warm-0);
+}
+
+.gi-summary > div {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+}
+
+.gi-summary > div + div {
+  border-top: 1px solid var(--color-stroke-subtle);
+}
+
+.gi-summary dt {
+  color: var(--color-text-secondary);
+}
+
+.gi-summary dd {
+  margin: 0;
+  color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+}
+
+.gi-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.gi-consent input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: var(--color-accent-coral);
+}
+
+.gi-error {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-coral-700);
+}
+
+.gi-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.gi-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gi-back {
+  padding: 16px 16px 16px 0;
+}

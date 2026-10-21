@@ -76,9 +76,7 @@ export function GetInvolved() {
                       entrance-animation transform. An <a>, not a <div> — the
                       whole row opens the same form as the CTA button below. */}
                   <a
-                    href={getInvolved.cta.ctaHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`${getInvolved.cta.ctaHref}?role=${item.id}`}
                     className="tw-roles-item-inner flex flex-col gap-2 no-underline"
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -95,12 +93,7 @@ export function GetInvolved() {
               ))}
             </div>
           </div>
-          <ButtonPrimary
-            href={getInvolved.cta.ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="self-start"
-          >
+          <ButtonPrimary href={getInvolved.cta.ctaHref} className="self-start">
             {getInvolved.cta.ctaLabel}
           </ButtonPrimary>
         </div>

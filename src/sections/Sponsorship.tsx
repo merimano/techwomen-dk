@@ -52,12 +52,12 @@ export function Sponsorship() {
           <div ref={tiersRef} className={`tw-tiers grid grid-cols-1 gap-8 md:grid-cols-3 ${tiersOn ? "is-on" : ""}`}>
             {sponsorshipTiers.map((tier, i) => (
               <div key={tier.name} className="tw-tier-card" style={{ "--delay": `${i * TIER_STAGGER_MS}ms` } as CSSProperties}>
-                <TierCard tier={tier} href={sponsorshipIntro.deckCtaHref} />
+                <TierCard tier={tier} href={`${sponsorshipIntro.deckCtaHref}?tier=${tier.id}`} />
               </div>
             ))}
           </div>
           <div className="flex flex-col items-center gap-3 text-center">
-            <ButtonSecondary href={sponsorshipIntro.deckCtaHref} target="_blank" rel="noopener noreferrer">
+            <ButtonSecondary href={sponsorshipIntro.deckCtaHref}>
               {sponsorshipIntro.deckCtaLabel}
             </ButtonSecondary>
             <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>

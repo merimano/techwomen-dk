@@ -28,8 +28,9 @@ export const footer = {
       heading: "Partner",
       links: [
         { label: "Sponsors", href: "#sponsorship" },
-        { label: "Host a workshop", href: "#get-involved" },
-        { label: "Apply to speak", href: "#get-involved" },
+        // Open the Get involved form with the matching role pre-ticked.
+        { label: "Host a workshop", href: "/get-involved?role=ai-masterteacher" },
+        { label: "Apply to speak", href: "/get-involved?role=panel-speaker" },
       ] as FooterLink[],
     },
     {
