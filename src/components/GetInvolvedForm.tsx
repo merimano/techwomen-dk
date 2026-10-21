@@ -64,8 +64,8 @@ export function GetInvolvedForm({ initialRoles = [], onSuccess }: GetInvolvedFor
     if (s === 0) {
       if (!answers.fullName.trim()) e.fullName = "Enter your full name.";
       if (!EMAIL_RE.test(answers.email.trim())) e.email = "Enter a valid email address.";
-      if (answers.linkedin.trim() && !/linkedin\.com\//i.test(answers.linkedin))
-        e.linkedin = "Paste a LinkedIn profile link, or leave this empty.";
+      if (!answers.linkedin.trim()) e.linkedin = "Paste a link to your LinkedIn profile.";
+      else if (!/linkedin\.com\//i.test(answers.linkedin)) e.linkedin = "That doesn't look like a LinkedIn profile link.";
       if (!answers.field) e.field = "Pick the option closest to your field.";
     }
     if (s === 1 && answers.roles.length === 0) e.roles = "Pick at least one way to contribute.";
@@ -165,7 +165,7 @@ export function GetInvolvedForm({ initialRoles = [], onSuccess }: GetInvolvedFor
               />
             </TextField>
           </div>
-          <TextField label="LinkedIn profile" optional error={errors.linkedin}>
+          <TextField label="LinkedIn profile" error={errors.linkedin}>
             <input
               className="form-input"
               type="url"
