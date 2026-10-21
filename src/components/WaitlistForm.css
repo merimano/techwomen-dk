@@ -1,0 +1,92 @@
+/* Membership waitlist form. Inputs reuse `.form-input` and the submit reuses
+   `.btn-primary` (both in index.css); only layout lives here. */
+
+.waitlist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.waitlist__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .waitlist__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.waitlist__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.waitlist__field .form-input {
+  font-size: 16px; /* 16px stops iOS Safari zooming in on focus */
+  padding: 12px 14px;
+}
+
+.waitlist__field .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.2);
+}
+
+.waitlist__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.waitlist__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.waitlist__consent input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: var(--color-accent-coral);
+}
+
+.waitlist__consent a {
+  color: var(--color-accent-coral);
+  text-decoration: underline;
+}
+
+.waitlist__consent a:hover {
+  color: var(--color-accent-coral-hover);
+}
+
+.waitlist__error {
+  font-size: 14px;
+  color: var(--color-coral-700);
+}
+
+.waitlist__submit:disabled {
+  cursor: wait;
+}
+
+@media (max-width: 639px) {
+  .waitlist__submit {
+    align-self: stretch;
+  }
+}
