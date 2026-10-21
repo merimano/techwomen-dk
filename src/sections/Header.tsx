@@ -2,13 +2,21 @@ import { useState } from "react";
 import { navLinks } from "../data/nav";
 import { LogoDot } from "../components/icons";
 
-export function Header() {
+interface HeaderProps {
+  /** Prefix for the in-page section links. "" on the home page; "/" on
+   *  other pages (e.g. /waitlist) so links jump back to the home sections. */
+  basePath?: string;
+}
+
+const sectionId = (link: string) => link.toLowerCase().replace(/\s+/g, "-");
+
+export function Header({ basePath = "" }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b" style={{ borderColor: "var(--color-stroke-subtle)", backgroundColor: "var(--color-warm-0)" }}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10 lg:px-20">
-        <a href="#top" className="flex items-center gap-3">
+        <a href={basePath ? basePath : "#top"} className="flex items-center gap-3">
           <LogoDot className="size-4" />
           <span className="text-[16px] font-extrabold" style={{ color: "var(--color-text-primary)" }}>
             TechWomen DK
@@ -17,7 +25,7 @@ export function Header() {
 
         <nav className="hidden items-center gap-8 text-sm font-normal md:flex" style={{ color: "var(--color-text-secondary)" }}>
           {navLinks.map((link) => (
-            <a key={link} href={`#${link.toLowerCase().replace(/\s+/g, "-")}`} className="hover:text-[var(--color-text-primary)]">
+            <a key={link} href={`${basePath}#${sectionId(link)}`} className="hover:text-[var(--color-text-primary)]">
               {link}
             </a>
           ))}
@@ -43,7 +51,7 @@ export function Header() {
           {navLinks.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
+              href={`${basePath}#${sectionId(link)}`}
               className="py-2"
               onClick={() => setOpen(false)}
             >
