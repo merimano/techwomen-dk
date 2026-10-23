@@ -1,7 +1,7 @@
 /* Hero headline: each line slides up from behind a mask and fades in. */
 .tw-hero-line-mask {
   display: block;
-  overflow: hidden;
+  overflow: visible;
 }
 .tw-hero-line {
   display: block;
